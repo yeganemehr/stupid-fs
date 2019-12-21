@@ -1,4 +1,5 @@
 #include "Directory.h"
+#include <algorithm>
 
 Directory::Directory(const string &name):
 	Node(name, Node::DIRECTORY)
@@ -56,9 +57,7 @@ vector<Node *> Directory::getChildrenRecursive() const
 
 Node *Directory::findByPath(string path)
 {
-	while (*(path.end()) == '/') {
-		path = path.substr(0, path.length() - 1);
-	}
+	path.erase(std::max((size_t) 1, path.find_last_not_of('/') + 1));
 	size_t slash = path.find('/');
 	if (slash == 0) {
 		if (this->parent != nullptr) {

@@ -1,11 +1,10 @@
 #include "Node.h"
 #include "Directory.h"
+#include <algorithm>
 
 string Node::basename(string path)
 {
-	while (*path.end() == '/') {
-		path.erase(path.end());
-	}
+	path.erase(std::max((size_t) 1, path.find_last_not_of('/') + 1));
 	size_t lastSlash = path.find_last_of('/');
 	if (lastSlash != string::npos) {
 		return path.substr(lastSlash + 1);
@@ -15,9 +14,7 @@ string Node::basename(string path)
 
 string Node::dirname(string path)
 {
-	while (*path.end() == '/') {
-		path.erase(path.end());
-	}
+	path.erase(std::max((size_t) 1, path.find_last_not_of('/') + 1));
 	size_t lastSlash = path.find_last_of('/');
 	if (lastSlash != string::npos) {
 		return path.substr(0, lastSlash);
