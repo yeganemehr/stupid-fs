@@ -51,7 +51,7 @@ int main(int , char **)
 		} else if (cmd == "exit") {
 			break;
 		} else {
-			cerr << "Unkown command: " << cmd;
+			cerr << "Unkown command: " << cmd << "\n";
 		}
 		if (change) {
 			db.save(root);
