@@ -1,0 +1,2 @@
+all:
+	g++ -I. -std=c++11 -o stupid-fs Database.cpp Directory.cpp Env.cpp File.cpp main.cpp Node.cpp Stmt.cpp commands/cd.cpp commands/cp.cpp commands/ls.cpp commands/mkdir.cpp commands/mv.cpp commands/pwd.cpp commands/rm.cpp commands/rmdir.cpp commands/touch.cpp
